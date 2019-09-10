@@ -1,0 +1,26 @@
+---
+title: filesaver
+layout: default
+---
+
+<h1>FileSaver</h1>
+
+<p>Demo using <a href="https://github.com/eligrey/FileSaver.js">FileSaver.js</a></p>
+
+<form>
+    <div class="form-group">
+        <label for="writing">Write here:</label>
+        <textarea class="form-control" id="writing" rows="3"></textarea>
+    </div>
+    <button id="saveButton" class="btn btn-primary">Save</button>
+</form>
+
+<script src="{{ '/assets/filesaver.min.js' | relative_url }}"></script>
+<script>
+    document.getElementById("saveButton").addEventListener("click", function(){
+        var writing = document.getElementById("writing").value;
+        var filename = "test.txt";
+        var blob = new Blob([writing], {type: "text/plain;charset=utf-8"});
+        saveAs(blob, filename);
+    });
+</script>

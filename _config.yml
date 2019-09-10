@@ -1,0 +1,18 @@
+# blank-dev-template
+# basic bootstrap template
+
+title: Download File
+
+# url is your gh-pages base, following the pattern: username.github.io
+url: https://evanwill.github.io
+# baseurl is your github repository's name prefixed with a /
+baseurl: /filesaving-test
+
+# Use Bootstrap (true, false)
+bootstrap: true
+# Use optional Bootstrap JS (true, false)
+bootstrap-js: true
+# Use JQuery Core
+jquery: true
+# Use fontawesome CDN (true, false)
+fontawesome: true

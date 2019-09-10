@@ -1,0 +1,29 @@
+---
+title: test
+layout: default
+---
+
+<h1>createObjectURL</h1>
+
+<p>Demo using <a href="https://developer.mozilla.org/en-US/docs/Web/API/URL/createObjectURL">URL.createObjectURL()</a></p>
+
+<form>
+    <div class="form-group">
+        <label for="writing">Write here:</label>
+        <textarea class="form-control" id="writing" rows="3"></textarea>
+    </div>
+</form>
+<button id="saveButton" class="btn btn-primary">Save</button>
+<div id="downloadReady"></div>
+
+<script>
+    document.getElementById("saveButton").addEventListener("click", function(){
+        var writing = document.getElementById("writing").value;
+        var filename = "test.txt";
+        var blob = new Blob([writing], {type: "text/plain;charset=utf-8"});
+        var download = window.URL.createObjectURL(blob);
+        var downloadButton = "<a download='" + filename + "' href='" + download + "'>Download Text File</a>";
+        document.getElementById("downloadReady").innerHTML = downloadButton;
+        // " + download + "
+    });
+</script>
