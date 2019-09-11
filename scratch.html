@@ -26,4 +26,13 @@ layout: default
         document.getElementById("downloadReady").innerHTML = downloadButton;
         // " + download + "
     });
+    
+    /* add warning if leaving */ 
+    // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
+    window.addEventListener("beforeunload", function(event) { 
+        // Cancel the event as stated by the standard.
+        event.preventDefault();
+        // Chrome requires returnValue to be set.
+        event.returnValue = 'Are you sure you want to leave page? Your data will be lost.';
+     });
 </script>
