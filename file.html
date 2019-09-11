@@ -17,19 +17,23 @@ layout: default
 
 <script src="{{ '/assets/filesaver.min.js' | relative_url }}"></script>
 <script>
+    var saved = false;
     document.getElementById("saveButton").addEventListener("click", function(){
         var writing = document.getElementById("writing").value;
         var filename = "test.txt";
         var blob = new Blob([writing], {type: "text/plain;charset=utf-8"});
+        saved = true;
         saveAs(blob, filename);
     });
-    
+
     /* add warning if leaving */ 
     // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
     window.addEventListener("beforeunload", function(event) { 
-        // Cancel the event as stated by the standard.
-        event.preventDefault();
-        // Chrome requires returnValue to be set.
-        event.returnValue = 'Are you sure you want to leave page? Your data will be lost.';
+        if (document.getElementById("writing").value != "" && saved == false) {
+            // Cancel the event as stated by the standard.
+            event.preventDefault();
+            // fallback, Chrome requires returnValue to be set.
+            event.returnValue = 'Are you sure you want to leave page? Your data will be lost.';
+        }
      });
 </script>
